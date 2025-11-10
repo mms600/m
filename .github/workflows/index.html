@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>عالم الجوالات</title>
+    <meta name="description" content="أحدث الهواتف الجوالة لجميع الشركات وجميع اكسسواراتها وملحقاتها بأفضل الأسعار.">
+    <meta name="keywords" content="هواتف جوالة, أجهزة نقالة, اكسسوارات جوال, سامسونج, آيفون, شاومي, أسعار جوالات">
+    <link rel="icon" type="image/png" href="favicon.png"> 
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    
+    <link rel="stylesheet" href="styles.css"> 
+    
+    <style>
+        
+        /* ==================================== */
+        /* تصحيح مشكلة العرض الزائد (Responsiveness Fix) */
+        /* ==================================== */
+        html {
+            box-sizing: border-box;
+            overflow-x: hidden; 
+        }
+        *, *::before, *::after {
+            box-sizing: inherit;
+        }
+
+        /* تعريف الألوان الجديدة */
+        :root {
+            --color-brand-primary: #DAA520; /* اللون الذهبي الأصلي */
+            --color-light-gold: #EEDD82; /* لون ذهبي أفتح للحدود (أكثر نعومة) */
+            --color-header-footer-bg: #fcfcfc; /* اللون البيج/الأبيض الكريمي الجديد (أهدأ) */
+            --color-card-bg: #ffffff; /* لون خلفية البطاقات (أبيض نقي) */
+            --color-section-bg: #f8f8f8; /* لون خلفية الأقسام بين البطاقات */
+        }
+
+        /* ==================================== */
+        /* التعديلات الأساسية على الخلفية والجسم */
+        /* ==================================== */
+        body {
+            background-image: url('Background-image.jpg'); 
+            background-size: cover; 
+            background-attachment: fixed; 
+            background-repeat: no-repeat; 
+            background-color: var(--color-section-bg); 
+            overflow-x: hidden; 
+            
+            /* 🚀 التعديل الهام لحل مشكلة الهامش السفلي: إلغاء أي هامش تلقائي */
+            margin: 0; 
+            padding: 0;
+        }
+        
+        /* ==================================== */
+        /* التعديل الهام: توحيد الهيدر والفوتر باللون الكريمي الأهدأ */
+        /* ==================================== */
+        .main-header,
+        .main-footer { 
+            background-color: var(--color-header-footer-bg) !important; 
+        }
+
+        /* إبقاء البانر العرضي أبيض للتمييز */
+        .full-width-banner { 
+            background-color: var(--color-card-bg) !important; 
+        }
+
+        /* توحيد خلفية الأقسام لرمادي فاتح جداً (أو أبيض) لبروز البطاقات */
+        .horizontal-offers-slider, 
+        section { 
+            background-color: var(--color-section-bg) !important; 
+        }
+
+        /* جعل قسم الترحيب شفافاً ليسمح لـ Background-image.jpg بالظهور خلفه */
+        .store-hero {
+            background-color: transparent !important;
+            padding-top: 15px; 
+            padding-bottom: 20px;
+        }
+        
+        /* تنسيقات الهيكل والتفاصيل (من الكود الأصلي) */
+        .full-width-banner {
+            width: 100%;
+            display: block; 
+            margin-bottom: 0; 
+        }
+        .full-width-banner img {
+            width: 100%;
+            height: auto;
+            display: block; 
+        }
+        
+        .store-hero .hero-title, .store-hero .hero-subtitle, .store-hero .hero-text {
+             color: #333333; 
+             text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.7); 
+        }
+        
+        /* 2. تنسيق شريط العروض الأفقي */
+        .horizontal-offers-slider {
+            padding: 15px 0;
+            margin-top: 20px;
+            position: relative; 
+        }
+        .horizontal-offers-slider .section-title {
+            font-size: 20px;
+            font-weight: 700;
+            text-align: right;
+            padding-right: 15px; 
+            margin-bottom: 15px;
+            color: #333;
+        }
+        .offers-scroll-container {
+            display: flex;
+            flex-wrap: nowrap; 
+            overflow-x: auto; 
+            padding: 0 15px 15px 15px; 
+            -webkit-overflow-scrolling: touch; 
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+        .offers-scroll-container::-webkit-scrollbar {
+            display: none;
+        }
+        
+        /* تنسيق البطاقة الأفقية للعروض (أبيض + حدود ذهبية خفيفة) */
+        .offer-card-h {
+            flex: 0 0 65vw; 
+            max-width: 320px;
+            margin-inline-end: 15px; 
+            
+            background-color: var(--color-card-bg); /* أبيض نقي */
+            border-radius: 12px; 
+            /* تخفيف الحد الذهبي: 1px بلون أفتح */
+            border: 1px solid var(--color-light-gold); 
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); /* ظل خفيف */
+            
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between; 
+            align-items: center;
+            padding: 15px;
+            text-align: center;
+            height: 160px; 
+            transition: transform 0.2s, box-shadow 0.2s; 
+        }
+        .offer-card-h:hover {
+            transform: translateY(-3px); 
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15); 
+        }
+        
+        .offer-icon {
+            font-size: 30px; 
+            color: var(--color-brand-primary); /* ذهبي */
+            margin-bottom: 5px;
+        }
+        
+        .offer-details span {
+            color: var(--color-brand-primary); 
+        }
+        
+        /* تنسيق بطاقات الأقسام (Category Cards) - أبيض + حدود ذهبية خفيفة */
+        .category-card {
+            background-color: var(--color-card-bg); /* أبيض نقي */
+            border-radius: 12px;
+            /* تخفيف الحد الذهبي: 1px بلون أفتح */
+            border: 1px solid var(--color-light-gold); 
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); 
+            padding: 20px 15px;
+            transition: transform 0.2s, box-shadow 0.2s;
+            text-align: center;
+        }
+        .category-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15); 
+        }
+        
+        /* توحيد لون الأيقونات في بطاقات الأقسام إلى الذهبي */
+        .category-card i {
+            color: var(--color-brand-primary); 
+        }
+
+        /* تصحيح نهائي: ضمان أن البطاقة الأخيرة تكون بيضاء */
+        .category-card.card-news {
+            background-color: var(--color-card-bg) !important; 
+            border: 1px solid var(--color-light-gold) !important; 
+        }
+        /* توحيد لون النص في بطاقة الأخبار إذا كان ما زال بيج/ذهبي */
+        .category-card.card-news h3,
+        .category-card.card-news p {
+            color: #333333 !important; 
+        }
+        
+        /* تحسين مظهر روابط الفوتر لتناسب الخلفية الهادئة */
+        .main-footer a {
+            color: #333333 !important; 
+        }
+        .main-footer .social-icons a i {
+             color: var(--color-brand-primary); 
+        }
+
+        /* 🚀 التعديل الهام لتوضيح زر العودة للأعلى */
+        #backToTop {
+            /* زيادة الحجم لجذب الانتباه */
+            width: 45px; 
+            height: 45px;
+            font-size: 18px; 
+            
+            /* لون خلفية أكثر وضوحاً */
+            background-color: var(--color-brand-primary); /* الذهبي */
+            color: white; /* لون النص أبيض */
+            
+            /* إضافة ظل واضح */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4); 
+            
+            /* ضمان أنه في أقصى اليمين وأعلى من أي شيء آخر */
+            right: 15px; 
+            bottom: 15px;
+            z-index: 1000; 
+            border-radius: 50%;
+            border: none;
+            cursor: pointer;
+            position: fixed;
+            display: none;
+        }
+        #backToTop:hover {
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+    <header class="main-header">
+        <div class="container">
+            <a href="index.html" class="logo-area">
+                <img src="logo.png" alt="Store Logo" class="main-logo-img">
+                <div class="titles-container">
+                    <span style="display: block; font-size: 15px; font-weight: 900; color: #333333;">
+                       عالم الجوالات    
+                    </span> 
+                    <span style="display: block; font-size: 11px; font-weight: 700; color: #555555; margin-top: -1px;"> 
+                       متجر للهواتف النقالة والإلكترونيات
+                    </span>
+                </div>
+            </a>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html" class="active"><i class="fas fa-mobile-alt"></i>الأجهزة</a></li>
+                    <li><a href="accessories.html"><i class="fas fa-headphones"></i>الملحقات</a></li> 
+                    <li><a href="video-library.html" class="video-link"><i class="fas fa-video"></i>شروحات المنتجات</a></li>
+                    <li><a href="contact.html"><i class="fas fa-envelope"></i>الاتصال بنا</a></li>
+                </ul>
+            </nav>
+            
+            <div class="cart-widget">
+                <a href="cart.html" class="cart-icon-link">
+                    <i class="fas fa-basket-shopping"></i> 
+                    <span class="cart-count">0</span>
+                </a>
+            </div>
+            
+            <div class="menu-toggle"><i class="fas fa-bars"></i></div>
+            
+        </div>
+    </header>
+    
+    <a href="category-apple.html" class="full-width-banner" title="جوالات حديثة قريباً">
+        <img src="banner-coming-soon.png" alt="إعلان: مجموعة جديدة من الجوالات الحديثة قريباً">
+    </a>
+    
+    <section id="store-hero" class="store-hero">
+       <div class="container tex-center">
+        <h2 class="hero-title">
+                أهلآ بك في   <span class="highlight-text"> منصة عالم الجوالات</span>
+           </h2>
+            <h2 class="hero-subtitle">
+            
+            </h2>
+            <p class="hero-text">
+                نوفر لكم جميع أنواع الأجهزة الجوالة لجميع الشركات وبأقل الأسعار، بالإضافة إلى تشكيلة واسعة من الملحقات الأصلية.
+            </p>
+        </div>
+    </section>
+
+    <section class="horizontal-offers-slider">
+        <h5 class="section-title">(عروض خاصة لك)
+        
+        </h5>
+        <div id="offersContainer" class="offers-scroll-container">
+            
+            <a href="accessories.html" class="offer-card-h card-tide">
+                <i class="fas fa-headphones offer-icon"></i> 
+                <div class="offer-details">
+                    <p>خصم 20% على جميع الملحقات</p>
+                    <span></span>
+                </div>
+                <span class="offer-cta-btn">اضغط هنا</span> 
+            </a>
+            
+            <a href="contact.html" class="offer-card-h card-cashback">
+                 <i class="fas fa-money-bill-wave offer-icon"></i> 
+                <div class="offer-details">
+                    <p>رصيد مسترجع يصل إلى 300 ريال</p>
+                    <span>اشترِ بـ 1000 ريال واحصل على رصيد</span>
+                </div>
+                <span class="offer-cta-btn">اشحن واحصل على رصيد</span> 
+            </a>
+            
+            <a href="category-xiaomi-vivo.html" class="offer-card-h card-xiaomi-vivo">
+                <i class="fas fa-mobile-alt offer-icon"></i>
+                <div class="offer-details">
+                    <p>عروض حصرية على الفئة الاقتصادية</p>
+                    <span>كن دائمأ علئ إطلاع</span>
+                </div>
+                <span class="offer-cta-btn">اكتشف الهواتف الآن</span>
+            </a>
+
+            <a href="category-samsung.html" class="offer-card-h card-xiaomi-vivo">
+                <i class="fas fa-mobile-alt offer-icon"></i>
+                <div class="offer-details">
+                    <p>عروض حصرية على الفئة الاقتصادية</p>
+                    <span>من samsung</span>
+                </div>
+                <span class="offer-cta-btn">اكتشف الهواتف الآن</span>
+            </a>
+           
+             <a href="contact.html" class="offer-card-h card-shipping">
+                <i class="fas fa-truck-fast offer-icon"></i> 
+                <div class="offer-details">
+                    <p>توصيل مجاني لجميع الطلبات</p>
+                    <span>محدود بوقت معين!</span>
+                </div>
+                <span class="offer-cta-btn">اضغط هنا</span>
+            </a>
+        </div>
+    </section>
+    <section>
+        <div class="container tex-center">
+            <div class="mobile-categories-grid">
+                <a href="category-apple.html" class="category-card card-apple">
+                    <i class="fab fa-apple"></i>
+                    <h3>أجهزة Apple (iPhone)</h3>
+                    <p>أحدث إصدارات آيفون والملحقات الأصلية</p>
+                </a>
+                <a href="category-samsung.html" class="category-card card-samsung">
+                    <i class="fas fa-tablet-alt"></i> 
+                    <h3>أجهزة Samsung (Galaxy)</h3>
+                    <p>تشكيلة واسعة من هواتف فئة Galaxy S و A</p>
+                </a>
+                <a href="category-xiaomi-vivo.html" class="category-card card-xiaomi">
+                    <i class="fas fa-mobile-alt"></i> 
+                    <h3>أجهزة Xiaomi & Vivo</h3>
+                    <p>أجهزة بأسعار منافسة وإمكانيات قوية</p>
+                </a>
+                <a href="accessories.html" class="category-card card-accessories">
+                    <i class="fas fa-headphones"></i>
+                    <h3>الملحقات والكماليات</h3>
+                    <p>سماعات، شواحن، أغطية حماية والمزيد</p>
+                </a>
+                <a href="https://youtu.be/bcKFxEY9w2k?si=JkFGttC2pNZFb9fb" class="category-card card-news">
+                    <i class="fas fa-bullhorn"></i> 
+                    <h3>نشرة الجوالات والأخبار</h3>
+                    <p>اكتشف أحدث الإصدارات العالمية للفيديوهات والمقالات</p>
+                </a>
+                </div>
+        </div>
+    </section>
+    
+    <hr style="border-top: 2px solid var(--color-brand-primary); width: 60%; margin: 30px auto 15px; opacity: 0.3;">
+    <footer class="main-footer" id="contact-footer">
+        <div class="container text-center">
+             <div class="social-icons">
+                <a href="https://www.facebook.com/share/1A32NWkjYx/" target="_blank" title="Facebook Page"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://x.com/" target="_blank" title="X / Twitter Page"><i class="fab fa-twitter"></i></a>
+                 <a href="https://telegram.org/" target="_blank" title="Telegram Page"><i class="fab fa-telegram-plane"></i></a>
+                <a href="https://www.youtube.com/@mms.100" target="_blank" title="YouTube Channel"><i class="fab fa-youtube"></i></a>
+            </div>
+            <p style="font-size: 14px; margin-bottom: 5px;">
+                <a href="privacy-policy.html" style="text-decoration: none;">سياسة الخصوصية</a>
+                <span style="margin: 0 10px;">|</span>
+                 <a href="contact.html" style="text-decoration: none;">اتصل بنا</a>
+            </p>
+            <p class="mb-0" style="font-size: 14px; color: #555555;">
+            جميع الحقوق محفوظة &copy;  <span id="current-year"></span>-M.M.S.ALMKHDRI
+            </p>
+        </div>
+    </footer>
+    <button onclick="topFunction()" id="backToTop" title="العودة للأعلى">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+    
+    <script src="script.js"></script> 
+    
+</body>
+</html>
